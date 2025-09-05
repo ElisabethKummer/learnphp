@@ -13,7 +13,7 @@ $day = (int) date('N', strtotime('07.09.2025'));
 var_dump($day);
 
 if($day == 1) {
-    var_dump('Esmaspäav');
+    var_dump('Esmaspäev');
 } elseif ($day == 2) {
     var_dump('Teisipäev');
 } elseif ($day == 3) {
@@ -26,6 +26,8 @@ if($day == 1) {
     var_dump('Laupäev');
 } elseif ($day == 7) {
     var_dump('Pühapäev');
+} else {
+    var_dump('imelik paev');
 }
 
 switch($day) {
@@ -50,4 +52,6 @@ switch($day) {
     case 7:
         var_dump('Pühapäev');
         break;
+    default:
+        var_dump('imelik paev');
 }
