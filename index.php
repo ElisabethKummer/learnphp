@@ -5,6 +5,13 @@ class Box {
     private $width;
     public $length;
 
+    public static $count = 0;
+
+    public static function cool(){
+        var_dump(self::$count);
+        var_dump(self::class);
+    }
+
     public function __construct($height=12, $width=12, $length=12) {
         $this->height = $height;
         $this->width = $width;
@@ -24,18 +31,37 @@ class Box {
     }
 }
 
-$Box1 = new Box(10, 10, 10);
-$Box1->setWidth(20);
-$volume = $Box1->volume();
-var_dump($Box1);
-var_dump($volume);
+class MetalBox extends Box{
+    public $material = 'metal';
+    public $weightPerUnit = 2;
 
-$Box2 = new Box(13, 11, 17);
-$volume = $Box2->volume();
-var_dump($Box2);
-var_dump($volume);
+    public function mass(){
+        return $this->volume() * $this->weightPerUnit;
+    }
+}
 
-$Box3 = new Box();
-$volume = $Box3->volume();
-var_dump($Box3);
-var_dump($volume);
+
+// class MetalBox extends Box{
+//     public $material = 'Iron';
+//     public $weughtPerUnit = 3;
+
+// }
+
+// $MetalBox = new MetalBox(10, 20, 40);
+// var_dump($MetalBox);
+// var_dump($MetalBox->volume());
+// var_dump($MetalBox->mass());
+
+$box1 = new Box();
+$box1::$count = 1;
+var_dump($box1::$count);
+
+$box2 = new Box();
+$box2::$count = 2;
+var_dump($box2::$count);
+
+var_dump($box1::$count);
+
+Box::cool();
+
+MetalBox::cool();
